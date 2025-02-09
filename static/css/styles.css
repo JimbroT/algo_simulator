@@ -1,0 +1,111 @@
+/* General styling for body, etc. */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  /* Dashboard wrapper to hide overflow */
+  .dashboard-wrapper {
+    width: 900px;         /* 3 columns * 300px per card */
+    overflow: hidden;
+    margin: 0 auto;       /* Center the grid on the page */
+    position: relative;
+  }
+  
+  /* Dashboard grid with sliding capability */
+  .dashboard {
+    display: grid;
+    grid-template-columns: repeat(6, 300px); /* 6 pages of 300px cells if two pages; adjust if more pages */
+    grid-template-rows: repeat(2, 300px);      /* 2 rows */
+    gap: 0;                                  /* No gaps between cells */
+    transition: transform 0.5s ease;         /* Animate sliding */
+  }
+  
+  /* Trader Card Styling */
+  .trader-card {
+    width: 300px;
+    height: 300px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease;
+  }
+  
+  .trader-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .trader-card img {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+  }
+  
+  .trader-info {
+    padding: 10px;
+  }
+  
+  .trader-info h2 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+  
+  .trader-info p {
+    margin: 5px 0 0;
+    font-size: 1em;
+    color: #555;
+  }
+  
+  /* Slider Controls */
+  .slider-controls {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .slider-controls button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 0 10px;
+    cursor: pointer;
+  }
+  
+  /* Modal styling (from previous steps) */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    position: relative;
+  }
+  
+  .close {
+    color: #aaa;
+    font-size: 28px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+  }
+  
+  .close:hover {
+    color: #000;
+  }
