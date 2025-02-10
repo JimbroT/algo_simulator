@@ -4,17 +4,191 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>3D Model Viewer</title>
-  <link rel="stylesheet" href="static/css/styles.css">
-  <link rel="stylesheet" href="static/css/portfolio-balance.css">
+  <link rel="stylesheet" href="static/css/unc/unc.css">
+  <link rel="stylesheet" href="static/css/unc/portfolio-balance.css">
+  <link rel="stylesheet" href="static/css/unc/dashboard.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/loaders/GLTFLoader.js"></script>
 </head>
 <body>
-  <div>
-    <div id="portfolio-balance"><p>Portfolio</p><p>Balance:</p></div>
-    <div id="pnl-counter">$100,000</div>
+  <div class="app">
+    <header class="app-header">
+      <div class="app-header-logo">
+        <div class="logo">
+          <span class="logo-icon">
+            <img src="https://assets.codepen.io/285131/almeria-logo.svg" />
+          </span>
+          <h1 class="logo-title">
+            <span>Almeria</span>
+            <span>NeoBank</span>
+          </h1>
+        </div>
+      </div>
+      <div class="app-header-navigation">
+        <div class="tabs">
+          <a href="#">
+            Overview
+          </a>
+          <a href="#" class="active">
+            Payments
+          </a>
+          <a href="#">
+            Cards
+          </a>
+          <a href="#">
+            Account
+          </a>
+          <a href="#">
+            System
+          </a>
+          <a href="#">
+            Business
+          </a>
+        </div>
+      </div>
+      <div class="app-header-actions">
+        <button class="user-profile">
+          <span>Matheo Peterson</span>
+          <span>
+            <img src="https://assets.codepen.io/285131/almeria-avatar.jpeg" />
+          </span>
+        </button>
+        <div class="app-header-actions-buttons">
+          <button class="icon-button large">
+            <i class="ph-magnifying-glass"></i>
+          </button>
+          <button class="icon-button large">
+            <i class="ph-bell"></i>
+          </button>
+        </div>
+      </div>
+      <div class="app-header-mobile">
+        <button class="icon-button large">
+          <i class="ph-list"></i>
+        </button>
+      </div>
+    </header>
+
+    <div class="app-body">
+      <div class="app-body-navigation">
+        <nav class="navigation">
+          <a href="#">
+            <i class="ph-browsers"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="#">
+            <i class="ph-check-square"></i>
+            <span>Scheduled</span>
+          </a>
+          <a href="#">
+            <i class="ph-swap"></i>
+            <span>Transfers</span>
+          </a>
+          <a href="#">
+            <i class="ph-file-text"></i>
+            <span>Templates</span>
+          </a>
+          <a href="#">
+            <i class="ph-globe"></i>
+            <span>SWIFT</span>
+          </a>
+          <a href="#">
+            <i class="ph-clipboard-text"></i>
+            <span>Exchange</span>
+          </a>
+        </nav>
+        <footer class="footer">
+          <h1>Almeria<small>©</small></h1>
+          <div>
+            Almeria ©<br />
+            All Rights Reserved 2021
+          </div>
+        </footer>
+      </div>
+
+      <div class="app-body-main-content">
+        <section class="service-section">
+          <h2>Service</h2>
+          <div class="service-section-header">
+            <div class="search-field">
+              <i class="ph-magnifying-glass"></i>
+              <input type="text" placeholder="Account number">
+            </div>
+            <div class="dropdown-field">
+              <select>
+                <option>Home</option>
+                <option>Work</option>
+              </select>
+              <i class="ph-caret-down"></i>
+            </div>
+            <button class="flat-button">
+              Search
+            </button>
+          </div>
+          <div class="mobile-only">
+            <button class="flat-button">
+              Toggle search
+            </button>
+          </div>
+          <div class="tiles">
+            <article class="tile">
+              <div class="tile-header">
+                <i class="ph-lightning-light"></i>
+                <h3>
+                  <span>Electricity</span>
+                  <span>UrkEnergo LTD.</span>
+                </h3>
+              </div>
+              <a href="#">
+                <span>Go to service</span>
+                <span class="icon-button">
+                  <i class="ph-caret-right-bold"></i>
+                </span>
+              </a>
+            </article>
+            <article class="tile">
+              <div class="tile-header">
+                <i class="ph-fire-simple-light"></i>
+                <h3>
+                  <span>Heating Gas</span>
+                  <span>Gazprom UA</span>
+                </h3>
+              </div>
+              <a href="#">
+                <span>Go to service</span>
+                <span class="icon-button">
+                  <i class="ph-caret-right-bold"></i>
+                </span>
+              </a>
+            </article>
+            <article class="tile">
+              <div class="tile-header">
+                <i class="ph-file-light"></i>
+                <h3>
+                  <span>Tax online</span>
+                  <span>Kharkov 62 str.</span>
+                </h3>
+              </div>
+              <a href="#">
+                <span>Go to service</span>
+                <span class="icon-button">
+                  <i class="ph-caret-right-bold"></i>
+                </span>
+              </a>
+            </article>
+          </div>
+          <div class="service-section-footer">
+            <p>Services are paid according to the current state of the currency and tariff.</p>
+          </div>
+        </section>
+      </div>
+
+      <div class="app-body-sidebar">
+        <div id="model-container"></div>
+      </div>
+    </div>
   </div>
-  <!-- The canvas will be automatically created by Three.js -->
+
   <script src="static/js/avatar.js"></script>
 </body>
 </html>

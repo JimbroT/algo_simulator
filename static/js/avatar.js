@@ -1,14 +1,23 @@
+// Get the model container
+const modelContainer = document.getElementById('model-container');
+
 // Set up the scene, camera, and renderer
 const scene = new THREE.Scene();
 
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(0, 2, 5); // Adjust camera position to view the model
+// Camera setup
+const camera = new THREE.PerspectiveCamera(
+  75, 
+  modelContainer.offsetWidth / modelContainer.offsetHeight, 
+  0.1, 
+  1000
+);
+camera.position.set(0, 1.5, 5);
 
-const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setSize(modelContainer.offsetWidth, modelContainer.offsetHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setClearColor(0xffffff);
-document.body.appendChild(renderer.domElement);
+renderer.setClearColor(0x000000, 0); // Transparent background
+modelContainer.appendChild(renderer.domElement);
 
 // Add lighting
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
@@ -26,31 +35,30 @@ loader.load(
     const model = gltf.scene;
     scene.add(model);
 
-    // Position and scale adjustments (if needed)
-    model.position.set(-5, 0, 0); // Center the model
-    model.scale.set(2.2, 2.2, 1);   // Adjust scale if the model is too large/small
-    model.rotation.y = THREE.MathUtils.degToRad(25); // Rotate 25 degrees to the right
+    // Position and scale adjustments
+    model.position.set(0, -1, .5);
+    model.scale.set(3, 3, 1);
 
     // Check if there are animations
     if (gltf.animations && gltf.animations.length > 0) {
       const mixer = new THREE.AnimationMixer(model);
-      const action = mixer.clipAction(gltf.animations[0]); // Play the first animation
+      const action = mixer.clipAction(gltf.animations[0]);
       action.play();
 
       // Animation loop
       const clock = new THREE.Clock();
       function animate() {
-        const delta = clock.getDelta(); // Get time since last frame
-        mixer.update(delta); // Update animations
+        const delta = clock.getDelta();
+        mixer.update(delta);
         renderer.render(scene, camera);
         requestAnimationFrame(animate);
       }
       animate();
     } else {
-      // If no animations, render the model statically
+      // Static rendering loop
       function animate() {
-        requestAnimationFrame(animate);
         renderer.render(scene, camera);
+        requestAnimationFrame(animate);
       }
       animate();
     }
@@ -63,30 +71,35 @@ loader.load(
 
 // Handle resizing
 window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
+  const { offsetWidth, offsetHeight } = modelContainer;
+  camera.aspect = offsetWidth / offsetHeight;
   camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(offsetWidth, offsetHeight);
 });
 
-// updating balance dynamically 
+// Updating balance dynamically
 const pnlCounter = document.getElementById('pnl-counter');
 
 let net = 100000;
 
-function updateBalance (newBalance) {
+function updateBalance(newBalance) {
   const previousBalance = net;
   net = newBalance;
-  pnlCounter.innerText = `$${net.toLocaleString()}`;
+
+  // Update the counter text
+  if (pnlCounter) {
+    pnlCounter.innerText = `$${net.toLocaleString()}`;
+  }
 
   // Update shadow and text colors dynamically
   if (net > previousBalance) {
-    pnlCounter.style.color = 'green'; // Profit text color
+    pnlCounter.style.color = 'green';
     document.documentElement.style.setProperty('--color-secondary', 'rgba(0, 255, 0, 0.8)');
     document.documentElement.style.setProperty('--color-tertiary', 'rgba(0, 200, 0, 0.6)');
     document.documentElement.style.setProperty('--color-quaternary', 'rgba(0, 150, 0, 0.4)');
     document.documentElement.style.setProperty('--color-quinary', 'rgba(0, 100, 0, 0.2)');
   } else if (net < previousBalance) {
-    pnlCounter.style.color = 'red'; // Loss text color
+    pnlCounter.style.color = 'red';
     document.documentElement.style.setProperty('--color-secondary', 'rgba(255, 0, 0, 0.8)');
     document.documentElement.style.setProperty('--color-tertiary', 'rgba(200, 0, 0, 0.6)');
     document.documentElement.style.setProperty('--color-quaternary', 'rgba(150, 0, 0, 0.4)');
@@ -94,6 +107,7 @@ function updateBalance (newBalance) {
   }
 }
 
+// Simulate balance changes
 setInterval(() => {
   const change = Math.floor(Math.random() * 2000 - 1000);
   updateBalance(net + change);

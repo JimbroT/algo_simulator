@@ -11,7 +11,6 @@ body {
   padding: 0;
   height: 100vh;
   background-color: #eff8e2; /* Optional background color */
-  overflow: hidden; /* Prevent scrollbars */
 }
 
 :root {
@@ -25,7 +24,7 @@ body {
 #pnl-counter {
   position: absolute;
   bottom: 9%; /* 18% from the bottom */
-  left: 12%;    /* 4% from the left */
+  left: 14%;    /* 4% from the left */
   text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary),
     9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
   font-family: 'bungee', sans-serif;

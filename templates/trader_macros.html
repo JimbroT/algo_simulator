@@ -1,9 +1,0 @@
-{% macro trader_card(trader_id, avatar, name, balance) %}
-<div class="trader-card" onclick="openTraderModal('{{ trader_id }}')">
-    <img src="{{ avatar }}" alt="{{ name }} Avatar">
-    <div class="trader-info">
-        <h2>{{ name }}</h2>
-        <p>Balance: ${{ balance }}</p>
-    </div>
-</div>
-{% endmacro %}
