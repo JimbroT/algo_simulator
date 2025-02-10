@@ -1,0 +1,76 @@
+#portfolio-balance {
+    position: absolute;
+    bottom: 5%; /* Adjust positioning */
+    left: 1%;    /* Adjust positioning */
+    font-family: 'bungee', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 20px; /* Adjust size */
+    color: var(--color-primary); /* Permanent text color */
+    text-shadow: 3px 3px 0 var(--custom-secondary), 6px 6px 0 var(--custom-tertiary),
+      9px 9px 0 var(--custom-quaternary), 12px 12px 0 var(--custom-quinary);
+    animation: slow-shadows 4s ease-in infinite;
+    letter-spacing: 0.2rem;
+    transition: text-shadow 0.5s ease-in-out; /* Smooth shadow animation */
+    text-align: center;
+  }
+  
+  /* Custom shadow colors for #portfolio-balance */
+  #portfolio-balance {
+    --custom-primary: black ;
+    --custom-secondary: rgba(43, 32, 39, 0.8); /* New blue shade */
+    --custom-tertiary: rgba(201, 55, 125, 0.6);
+    --custom-quaternary: rgba(213, 28, 127, 0.4);
+    --custom-quinary: rgba(255, 0, 204, 0.2);
+  }
+  
+  @keyframes slow-shadows {
+    0% {
+      text-shadow: none;
+    }
+    10% {
+      transform: translate(-3px, -3px);
+      text-shadow: 3px 3px 0 var(--custom-secondary);
+    }
+    20% {
+      transform: translate(-6px, -6px);
+      text-shadow: 3px 3px 0 var(--custom-secondary),
+        6px 6px 0 var(--custom-tertiary);
+    }
+    30% {
+      transform: translate(-9px, -9px);
+      text-shadow: 3px 3px 0 var(--custom-secondary),
+        6px 6px 0 var(--custom-tertiary), 9px 9px var(--custom-quaternary);
+    }
+    40% {
+      transform: translate(-12px, -12px);
+      text-shadow: 3px 3px 0 var(--custom-secondary),
+        6px 6px 0 var(--custom-tertiary), 9px 9px var(--custom-quaternary),
+        12px 12px 0 var(--custom-quinary);
+    }
+    50% {
+      transform: translate(-12px, -12px);
+      text-shadow: 3px 3px 0 var(--custom-secondary),
+        6px 6px 0 var(--custom-tertiary), 9px 9px var(--custom-quaternary),
+        12px 12px 0 var(--custom-quinary);
+    }
+    60% {
+      text-shadow: 3px 3px 0 var(--custom-secondary),
+        6px 6px 0 var(--custom-tertiary), 9px 9px var(--custom-quaternary),
+        12px 12px 0 var(--custom-quinary);
+    }
+    70% {
+      text-shadow: 3px 3px 0 var(--custom-secondary),
+        6px 6px 0 var(--custom-tertiary), 9px 9px var(--custom-quaternary);
+    }
+    80% {
+      text-shadow: 3px 3px 0 var(--custom-secondary),
+        6px 6px 0 var(--custom-tertiary);
+    }
+    90% {
+      text-shadow: 3px 3px 0 var(--custom-secondary);
+    }
+    100% {
+      text-shadow: none;
+    }
+  }

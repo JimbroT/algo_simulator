@@ -1,111 +1,90 @@
-/* General styling for body, etc. */
+:root {
+  --color-primary: #f6aca2;
+  --color-secondary: #f49b90;
+  --color-tertiary: #f28b7d;
+  --color-quaternary: #f07a6a;
+  --color-quinary: #ee6352;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: #eff8e2; /* Optional background color */
+  overflow: hidden; /* Prevent scrollbars */
+}
+
+:root {
+  --color-primary: #f6aca2; /* Default text color */
+  --color-secondary: rgba(255, 0, 0, 0.8); /* Default red */
+  --color-tertiary: rgba(200, 0, 0, 0.6);
+  --color-quaternary: rgba(150, 0, 0, 0.4);
+  --color-quinary: rgba(100, 0, 0, 0.2);
+}
+
+#pnl-counter {
+  position: absolute;
+  bottom: 9%; /* 18% from the bottom */
+  left: 12%;    /* 4% from the left */
+  text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary),
+    9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
+  font-family: 'bungee', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: calc(2rem + 1vw); /* Adjustable size */
+  color: var(--color-primary);
+  animation: shadows 1.2s ease-in infinite;
+  letter-spacing: 0.2rem;
+  transition: color 0.5s ease-in-out;
+}
+
+@keyframes shadows {
+  0% {
+    text-shadow: none;
   }
-  
-  /* Dashboard wrapper to hide overflow */
-  .dashboard-wrapper {
-    width: 900px;         /* 3 columns * 300px per card */
-    overflow: hidden;
-    margin: 0 auto;       /* Center the grid on the page */
-    position: relative;
+  10% {
+    transform: translate(-3px, -3px);
+    text-shadow: 3px 3px 0 var(--color-secondary);
   }
-  
-  /* Dashboard grid with sliding capability */
-  .dashboard {
-    display: grid;
-    grid-template-columns: repeat(6, 300px); /* 6 pages of 300px cells if two pages; adjust if more pages */
-    grid-template-rows: repeat(2, 300px);      /* 2 rows */
-    gap: 0;                                  /* No gaps between cells */
-    transition: transform 0.5s ease;         /* Animate sliding */
+  20% {
+    transform: translate(-6px, -6px);
+    text-shadow: 3px 3px 0 var(--color-secondary),
+      6px 6px 0 var(--color-tertiary);
   }
-  
-  /* Trader Card Styling */
-  .trader-card {
-    width: 300px;
-    height: 300px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.2s ease;
+  30% {
+    transform: translate(-9px, -9px);
+    text-shadow: 3px 3px 0 var(--color-secondary),
+      6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary);
   }
-  
-  .trader-card:hover {
-    transform: scale(1.05);
+  40% {
+    transform: translate(-12px, -12px);
+    text-shadow: 3px 3px 0 var(--color-secondary),
+      6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary),
+      12px 12px 0 var(--color-quinary);
   }
-  
-  .trader-card img {
-    width: 100%;
-    height: 60%;
-    object-fit: cover;
+  50% {
+    transform: translate(-12px, -12px);
+    text-shadow: 3px 3px 0 var(--color-secondary),
+      6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary),
+      12px 12px 0 var(--color-quinary);
   }
-  
-  .trader-info {
-    padding: 10px;
+  60% {
+    text-shadow: 3px 3px 0 var(--color-secondary),
+      6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary),
+      12px 12px 0 var(--color-quinary);
   }
-  
-  .trader-info h2 {
-    margin: 0;
-    font-size: 1.2em;
+  70% {
+    text-shadow: 3px 3px 0 var(--color-secondary),
+      6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary);
   }
-  
-  .trader-info p {
-    margin: 5px 0 0;
-    font-size: 1em;
-    color: #555;
+  80% {
+    text-shadow: 3px 3px 0 var(--color-secondary),
+      6px 6px 0 var(--color-tertiary);
   }
-  
-  /* Slider Controls */
-  .slider-controls {
-    text-align: center;
-    margin-top: 20px;
+  90% {
+    text-shadow: 3px 3px 0 var(--color-secondary);
   }
-  
-  .slider-controls button {
-    padding: 10px 20px;
-    font-size: 16px;
-    margin: 0 10px;
-    cursor: pointer;
+  100% {
+    text-shadow: none;
   }
-  
-  /* Modal styling (from previous steps) */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 100;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  .modal-content {
-    background-color: #fff;
-    margin: 10% auto;
-    padding: 20px;
-    width: 80%;
-    max-width: 600px;
-    border-radius: 8px;
-    position: relative;
-  }
-  
-  .close {
-    color: #aaa;
-    font-size: 28px;
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    cursor: pointer;
-  }
-  
-  .close:hover {
-    color: #000;
-  }
+}
